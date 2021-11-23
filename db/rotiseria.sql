@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2021 a las 11:26:16
+-- Tiempo de generación: 23-11-2021 a las 14:42:26
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -97,6 +97,30 @@ INSERT INTO `comidas` (`id`, `titulo`, `categoria_fk`, `detalle`, `imagen`, `pre
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `noticias`
+--
+
+CREATE TABLE `noticias` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(200) NOT NULL,
+  `mensaje` varchar(535) NOT NULL,
+  `fecha` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `noticias`
+--
+
+INSERT INTO `noticias` (`id`, `titulo`, `mensaje`, `fecha`) VALUES
+(9, 'Cerrado', 'El dia de hoy el delivery se encuntra cerrado.\r\nVolveremos a abrir en febrero', '23-11-2021'),
+(10, 'OFERTA PIZZA JAMON Y QUESO', 'Tenemos 2 x 1 la pizza de jamon y queso, no se la pierda\r\nclick  <a href=\"productos\">aqui</a> para ir a ver productos', '23-11-2021'),
+(11, 'CERVEZA SIN STOCK', 'La cerveza linea Quilmes actualmente no tiene stock', '23-11-2021'),
+(12, 'Cigarrillos', 'Pronto venderemos cigarrillos tambien', '23-11-2021'),
+(13, 'Nuevo telefono de contacto', 'Tenemos otro nuevo telefono de contacto, tel: 2938 - 02429393', '23-11-2021');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -144,6 +168,12 @@ ALTER TABLE `comidas`
   ADD KEY `categoria_fk` (`categoria_fk`);
 
 --
+-- Indices de la tabla `noticias`
+--
+ALTER TABLE `noticias`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -170,6 +200,12 @@ ALTER TABLE `comentarios`
 --
 ALTER TABLE `comidas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
+--
+-- AUTO_INCREMENT de la tabla `noticias`
+--
+ALTER TABLE `noticias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
