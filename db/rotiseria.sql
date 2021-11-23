@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2021 a las 10:57:09
+-- Tiempo de generación: 23-11-2021 a las 11:26:16
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -62,7 +62,9 @@ CREATE TABLE `comentarios` (
 --
 
 INSERT INTO `comentarios` (`id`, `id_comida_fk`, `usuario`, `comentario`, `valoracion`, `fecha`) VALUES
-(141, 39, 'Juan', 'Muy rica pero llego quemada', 3, '23/11/2021');
+(141, 39, 'Juan', 'Muy rica pero llego quemada', 3, '23/11/2021'),
+(142, 41, 'Juan', 'Llego medio derretido', 3, '23/11/2021'),
+(143, 43, 'Juan', 'LLego muy fria, excelente servicio', 5, '23/11/2021');
 
 -- --------------------------------------------------------
 
@@ -84,7 +86,13 @@ CREATE TABLE `comidas` (
 --
 
 INSERT INTO `comidas` (`id`, `titulo`, `categoria_fk`, `detalle`, `imagen`, `precio`) VALUES
-(39, 'Pizza a la española', 9, 'Pizza española, 50 g de salami\r\n50 g de chorizo\r\n50 g de beicon (tocino o tocineta)\r\n100 g de queso emmental\r\n150 g de queso mozzarella\r\n200 ml de tomate triturado o salsa de tomate\r\nPimienta\r\nOrégano\r\nSal\r\nAceite de oliv', 'images/piza.jpg', 720);
+(39, 'Pizza a la española', 9, 'Pizza española, 50 g de salami\r\n50 g de chorizo\r\n50 g de beicon (tocino o tocineta)\r\n100 g de queso emmental\r\n150 g de queso mozzarella\r\n200 ml de tomate triturado o salsa de tomate\r\nPimienta\r\nOrégano\r\nSal\r\nAceite de oliv', 'images/piza.jpg', 720),
+(40, 'Empanadas Jamon y Queso', 9, 'Empanadas de jamon y queso, fritas en grasa. el precio es por empanada', 'images/empanadas.jpg', 140),
+(41, 'Helado Chino', 10, 'Helado marca Chino de todos los gustos. el precio es por 1/4', 'images/heladochino.jpg', 400),
+(42, 'Sandwich de Carne', 9, 'Sandwich de mila de carne vacuna, con jamon, queso, tomate, lechuga y pan fresco', 'images/sandwich-de-milanesa.jpg', 755),
+(43, 'Cerveza Quilmes', 3, 'Cerveza quilmes rubia de litro.', 'images/quilmes-cervezajpg.jpg', 250),
+(44, 'Coca Cola clasica', 2, 'Coca cola de 1litro y medio clasica', 'images/cocacola.jpg', 250),
+(45, 'Empanadas de carne', 9, 'Empanadas de carne, con aceitunas,huevo,morron,cebolla. el precio es por empanada', 'images/empanadacarne.jpg', 120);
 
 -- --------------------------------------------------------
 
@@ -155,13 +163,13 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
 
 --
 -- AUTO_INCREMENT de la tabla `comidas`
 --
 ALTER TABLE `comidas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
