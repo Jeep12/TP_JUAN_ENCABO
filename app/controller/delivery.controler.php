@@ -2,6 +2,7 @@
 require_once("app/model/products.model.php");
 require_once("app/model/categories.model.php");
 require_once("app/model/user.model.php");
+require_once("app/model/news.model.php");
 
 require_once("app/view/durcor.view.php");
 require_once("helpers/users.helpers.php");
@@ -13,12 +14,14 @@ class DeliveryController
     private $modelUsers;
     private $modelProducts;
     private $modelCategories;
+    private $modelNews;
 
 
     function __construct()
     {   
-        $this->modelUsers = new UserModel;
         $this->view = new DurCorView();
+        $this->modelUsers = new UserModel;
+        $this->modelNews = new NewsModel();
         $this->modelProducts = new ProductsModel();
         $this->modelCategories = new CategoriesModel();
         $this->userHelper = new UserHelper();
@@ -27,12 +30,19 @@ class DeliveryController
     public function showHome()
     {
         $nombre = '';
+        $pagina = 1;
         if (!empty($_SESSION['USERNAME'])) {
             $nombre =   $_SESSION['USERNAME'];
         }
+        if (isset($_GET['pagina'])) {
+            $pagina  = $_GET['pagina'];
+        }
+     
+        $news = $this->modelNews->getNews($pagina);
+        $cantPaginas = $this->modelNews->cantPaginas();
         $admin = $this->userHelper->admin();
         $sesion = $this->userHelper->checkLoggedIn();
-        $this->view->renderHome($admin, $sesion, $nombre);
+        $this->view->renderHome($admin, $sesion, $nombre,$cantPaginas,$pagina,$news);
     }
     //muestra el panel admin
     public function showPanelAdmin()

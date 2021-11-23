@@ -13,6 +13,8 @@
 <div class="row" style="text-align: center;margin-top:80px">
     <div class="col-sm-6">
         <h5>Agregar una noticia</h5>
+        {include file="templates/addNews.tpl"}
+
     </div>
     <div class="col-sm-6">
         <h5>Lista de usuarios</h5>

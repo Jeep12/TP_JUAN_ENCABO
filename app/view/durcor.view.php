@@ -7,9 +7,12 @@ class DurCorView {
         $this->smarty = new Smarty();
       
     }
-    public function renderHome ($admin,$sesion,$nombre){
+    public function renderHome ($admin,$sesion,$nombre,$cantPaginas,$pagina,$news){
         $this->smarty->assign("admin", $admin);
         $this->smarty->assign("sesion", $sesion);
+        $this->smarty->assign("cantPaginas", $cantPaginas);
+        $this->smarty->assign("pagina", $pagina);
+        $this->smarty->assign("news", $news);
         $this->smarty->assign("nombre", $nombre);
         $this->smarty->display("templates/home.tpl");
     }

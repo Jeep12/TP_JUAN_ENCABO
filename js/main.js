@@ -1,5 +1,5 @@
 
-const url = "http://localhost/proyectos/TP_ESPECIAL_JUAN_ENCABO/";
+const url = "http://localhost/proyectos/TP_JUAN_ENCABO/";
 document.querySelector(".btn_menu").addEventListener("click", toggleMenu);
 function toggleMenu() {
     document.querySelector(".navigation").classList.toggle("show");
@@ -38,18 +38,16 @@ async function getAllProducts() {
 }
 
 jsonProducts.then(response => {
-    let posicion = document.querySelectorAll(".posicion");
+    let pagina = document.querySelectorAll(".posicion");
     let posicionData, urlPosicion;
-
-    for (let i = 0; i < posicion.length; i++) {
-        posicion[i].addEventListener("click", event => {
-            posicionData = posicionData = posicion[i].getAttribute("data-posicion");
+   
+    for (let i = 0; i < pagina.length; i++) {
+        pagina[i].addEventListener("click", event => {
+            posicionData = posicionData = pagina[i].getAttribute("data-posicion");
             urlPosicion = url + "/api/paginacion?page=" + posicionData;
             showPagination(urlPosicion);
         })
-
     }
-
 })
 async function showPagination(position) {
     vueProducts.products = [];
@@ -72,7 +70,6 @@ if (btnShowAll) {
         e.preventDefault();
         vueProducts.mensaje = " ";
         showProducts();
-
     })
 }
 let btnSearch = document.getElementById("busqueda");
@@ -97,8 +94,6 @@ if (btnSearch) {
     }
 
 }
-
-
 
 //----------------------PARTE COMENTARIOS ------------------------
 //Esta funcion hace el request con los comentarios donde coincidan con el id del producto
@@ -132,6 +127,9 @@ async function showComments() {
         console.log(error);
     }
 }
+//si showComment se cumple agarro los botones eliminar de los comentarios como un arreglo
+//y obtengo de ellos con getAtribute el id del comentario para poder concatenarlo mas tarde
+//en el fetch del delete
 showComment.then(response => {
     let btnBorrarComment = document.getElementsByName("deleteComment");
     for (let i = 0; i < btnBorrarComment.length; i++) {
@@ -141,6 +139,9 @@ showComment.then(response => {
         });
     }
 })
+//cuando ya tengo el id del comentario se lo paso a la funcion deleteComment y lo concateno la url para el fetch
+//la url funciona en postman, es la misma. pero aca no funciona no se porque
+//
 async function deleteComment(id) {
     console.log("URL REQUEST: " + url + "api/deleteComment/" + id);
     try {
@@ -148,27 +149,32 @@ async function deleteComment(id) {
             "method": "DELETE",
             "headers": { "Content-type": "application/json" }
         });
-        if(res.status ===200){
+        if (res.status === 200) {
             console.log("borrado");
         }
     } catch (error) {
         console.log(error);
     }
 }
+
+//para cargar un json obtengo del div boxComentario el id del producto, el nombre del usuario.
+
 let btnSendComment = document.getElementById("sendComment");
 if (btnSendComment) {
     btnSendComment.addEventListener("click", SendComment);
     async function SendComment(e) {
         e.preventDefault();
+        
         let valueUser, commentUser, idProduct_fk, boxComentario, dataNombre;
+        let listComentario = document.getElementById("listComentario");
         boxComentario = document.getElementById("boxComentarios");
+        
         dataNombre = boxComentario.getAttribute("data-nombre");
         idProduct_fk = boxComentario.getAttribute("data-id");
-        let listComentario = document.getElementById("listComentario");
-        listComentario.innerHTML = " ";
         valueUser = document.getElementById("selectValue").value;
         commentUser = document.getElementById("commentUser").value;
-
+        
+        listComentario.innerHTML = " ";
         let today = new Date();
         let day = today.getDate();
         let month = today.getMonth() + 1;
