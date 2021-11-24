@@ -6,6 +6,7 @@ function toggleMenu() {
 }
 
 let boxProductos = document.getElementById("productos");
+
 const vueProducts = new Vue(
     {
         el: "#productos",
@@ -15,13 +16,14 @@ const vueProducts = new Vue(
             mensaje: " "
 
         }
+        
     })
 
 //Esta funcion calcula la cantidad de paginas necesarias para la paginacion
 let jsonProducts = getAllProducts();
 async function getAllProducts() {
     try {
-        let res = await fetch(url + "/api/getProducts");
+        let res = await fetch(url + "/api/products");
         let ProductsJson = await res.json();
         let totalArticulos, articulosPorPagina, totalPaginas;
 
@@ -115,9 +117,9 @@ async function showComments() {
                 listComentario.innerHTML += "<p class='text-muted'> Puntación:" + response[i].valoracion + "</p>";
                 listComentario.innerHTML += "<p style=''> Fecha de publicación " + response[i].fecha + "</p>";
                 if (dataAdmin == true) {
-                    listComentario.innerHTML += "<button name='deleteComment' data-idComment=" + response[i].id + ">Borrar</button>";
+                    listComentario.innerHTML += "<button type='button' name='deleteComment' data-idComment=" + response[i].id + ">Borrar</button>";
                 }
-                listComentario.innerHTML += "</li>"
+                listComentario.innerHTML += "</li>";
                 listComentario.innerHTML += "<hr>";
             }
         } else {
@@ -132,6 +134,7 @@ async function showComments() {
 //en el fetch del delete
 showComment.then(response => {
     let btnBorrarComment = document.getElementsByName("deleteComment");
+    console.log(btnBorrarComment);
     for (let i = 0; i < btnBorrarComment.length; i++) {
         btnBorrarComment[i].addEventListener("click", e => {
             let idComment = btnBorrarComment[i].getAttribute("data-idComment");
@@ -143,15 +146,16 @@ showComment.then(response => {
 //la url funciona en postman, es la misma. pero aca no funciona no se porque
 //
 async function deleteComment(id) {
-    console.log("URL REQUEST: " + url + "api/deleteComment/" + id);
+    let listComentario = document.getElementById("listComentario");
+    
     try {
-        let res = await fetch(url + "api/deleteComment/" + id, {
-            "method": "DELETE",
-            "headers": { "Content-type": "application/json" }
+        let res = await fetch(url + "api/comments/" + id, {
+            method: "DELETE"
         });
-        if (res.status === 200) {
-            console.log("borrado");
-        }
+       if (res.status === 200){
+        listComentario.innerHTML= " ";
+        showComments();
+       }
     } catch (error) {
         console.log(error);
     }
@@ -189,7 +193,7 @@ if (btnSendComment) {
             "fecha": today
         }
         try {
-            let res = await fetch(url + "/api/addComment", {
+            let res = await fetch(url + "/api/comments", {
                 "method": "POST",
                 "headers": { "Content-type": "application/json" },
                 "body": JSON.stringify(comment)

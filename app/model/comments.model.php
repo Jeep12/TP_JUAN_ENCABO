@@ -29,9 +29,11 @@ class CommentsModel extends Model
         return $comment;
 
     }
-    public function deleteTask($id){
+    public function deleteComment($id){
         $sql = "DELETE FROM comentarios WHERE id = ?";
         $query = $this->pdo->prepare($sql);
         $query->execute([$id]);
+        return $query->rowCount();
+        
     }
 }

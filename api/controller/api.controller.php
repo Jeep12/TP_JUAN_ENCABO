@@ -57,11 +57,15 @@ class ApiDeliveryController
         }
     }
     public function deleteComment($params)
-    {
+    {   
+        if (!isset($params[':ID'])) {
+            $this->view->response("No existe el comentario", 404);
+            die();
+        }
         $id = $params[':ID'];
         $comment = $this->modelComments->getComment($id);
         if ($comment) {
-            $this->modelComments->deleteTask($id);
+            $this->modelComments->deleteComment($id);
             $this->view->response("El comentario se elimino con exito", 200);
         } else {
             $this->view->response("No existe el comentario", 404);
@@ -70,7 +74,7 @@ class ApiDeliveryController
     public function getSearch($params)
     {
         $id = $params[':ID'];
-      
+
         $search = $this->modelProducts->getSearch($id);
         if ($search) {
             $this->view->response($search, 200);
