@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2021 a las 14:42:26
+-- Tiempo de generación: 25-11-2021 a las 01:46:14
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -62,9 +62,15 @@ CREATE TABLE `comentarios` (
 --
 
 INSERT INTO `comentarios` (`id`, `id_comida_fk`, `usuario`, `comentario`, `valoracion`, `fecha`) VALUES
-(141, 39, 'Juan', 'Muy rica pero llego quemada', 3, '23/11/2021'),
-(142, 41, 'Juan', 'Llego medio derretido', 3, '23/11/2021'),
-(143, 43, 'Juan', 'LLego muy fria, excelente servicio', 5, '23/11/2021');
+(167, 40, 'Juan', 'asd', 3, '23/11/2021'),
+(168, 40, 'Juan', 'asd', 3, '23/11/2021'),
+(171, 47, 'Juan', 'Muy buena', 3, '24/11/2021'),
+(174, 41, 'admin', 'Comentario helado', 1, '24/11/2021'),
+(175, 41, 'admin', 'Comentario helado 2', 1, '24/11/2021'),
+(176, 39, 'admin', 'Comentario pizza', 5, '24/11/2021'),
+(177, 42, 'admin', 'Comentario sandwich 1', 5, '24/11/2021'),
+(178, 42, 'admin', 'Comentario sandwich 2', 5, '24/11/2021'),
+(179, 42, 'admin', 'Comentario sandwich 3', 5, '24/11/2021');
 
 -- --------------------------------------------------------
 
@@ -92,7 +98,8 @@ INSERT INTO `comidas` (`id`, `titulo`, `categoria_fk`, `detalle`, `imagen`, `pre
 (42, 'Sandwich de Carne', 9, 'Sandwich de mila de carne vacuna, con jamon, queso, tomate, lechuga y pan fresco', 'images/sandwich-de-milanesa.jpg', 755),
 (43, 'Cerveza Quilmes', 3, 'Cerveza quilmes rubia de litro.', 'images/quilmes-cervezajpg.jpg', 250),
 (44, 'Coca Cola clasica', 2, 'Coca cola de 1litro y medio clasica', 'images/cocacola.jpg', 250),
-(45, 'Empanadas de carne', 9, 'Empanadas de carne, con aceitunas,huevo,morron,cebolla. el precio es por empanada', 'images/empanadacarne.jpg', 120);
+(45, 'Empanadas de carne', 9, 'Empanadas de carne, con aceitunas,huevo,morron,cebolla. el precio es por empanada', 'images/empanadacarne.jpg', 120),
+(47, 'Tarta ', 9, 'Tarta de jamon y queso. ', 'images/tarta.jpg', 560);
 
 -- --------------------------------------------------------
 
@@ -116,7 +123,8 @@ INSERT INTO `noticias` (`id`, `titulo`, `mensaje`, `fecha`) VALUES
 (10, 'OFERTA PIZZA JAMON Y QUESO', 'Tenemos 2 x 1 la pizza de jamon y queso, no se la pierda\r\nclick  <a href=\"productos\">aqui</a> para ir a ver productos', '23-11-2021'),
 (11, 'CERVEZA SIN STOCK', 'La cerveza linea Quilmes actualmente no tiene stock', '23-11-2021'),
 (12, 'Cigarrillos', 'Pronto venderemos cigarrillos tambien', '23-11-2021'),
-(13, 'Nuevo telefono de contacto', 'Tenemos otro nuevo telefono de contacto, tel: 2938 - 02429393', '23-11-2021');
+(13, 'Nuevo telefono de contacto', 'Tenemos otro nuevo telefono de contacto, tel: 2938 - 02429393', '23-11-2021'),
+(14, 'Noticia numero no se', 'alalalla', '23-11-2021');
 
 -- --------------------------------------------------------
 
@@ -141,7 +149,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `admin`, `nick`, `nombre`, `apellido`, `direccion`, `telefono`, `email`, `password`) VALUES
-(30, 1, 'jeep12', 'Juan', 'Encabo', '', '123', '', '$argon2id$v=19$m=65536,t=4,p=1$Rk5GYzExTUpyNVQ2LzhiRg$MzI50sz5c9vCDl+EF+zd2CmKqLA8CwKkzXAcznGTxJ4');
+(35, 1, 'admin', 'admin', 'demo', '', '2983402222', '', '$argon2id$v=19$m=65536,t=4,p=1$bTBmSjNCZ0EvWEczRE16Vg$40LakZtET8wKlvs+uZf3vNLYvWBVolSS3cSJgER9SIU'),
+(36, 0, 'juan', 'juan', 'encabo', '', '298340258', '', '$argon2id$v=19$m=65536,t=4,p=1$Y3VoNHpYL3VPeG40ZTFsNA$T+Yk9rhz2NLfho98B0o161n89lpU+z1J5YwgNGbsUs8');
 
 --
 -- Índices para tablas volcadas
@@ -193,25 +202,25 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
 
 --
 -- AUTO_INCREMENT de la tabla `comidas`
 --
 ALTER TABLE `comidas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `noticias`
 --
 ALTER TABLE `noticias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Restricciones para tablas volcadas

@@ -179,6 +179,7 @@ ul.navigation li:hover {
     grid-auto-columns: minmax(15rem, auto);
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     grid-gap: 1rem;
+    
 }
 
 .containerProduct {
@@ -341,5 +342,11 @@ ul.navigation li:hover {
         margin: auto;
         height: 400px;
         border-radius: 5px;
+    }
+    .containerP {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+        " containerProduct containerProduct";
     }
 }

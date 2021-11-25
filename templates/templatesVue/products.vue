@@ -17,7 +17,8 @@
             </div>
             <div class="containerP" type="button">
                 <div class="containerProduct" v-for="product in products">
-                    <img class="img-fluid imgProducts" v-bind:src="product.imagen">
+                  
+                    <img v-if="product.imagen != 'NULL'" class="img-fluid imgProducts" v-bind:src="product.imagen">
                     <h3>{{product.titulo}}</h3>
 
                     <p style="font-size: 20px;">${{product.precio}}</p>

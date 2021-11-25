@@ -18,4 +18,5 @@
         <img src="images/rotiseriaimg.jpg" alt="imagen de la rotiseria" class="img-fluid">
     </div>
 </div>
+
 {include file="templates/footer.tpl"}

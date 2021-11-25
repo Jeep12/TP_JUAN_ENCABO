@@ -32,10 +32,7 @@ class UserController
 
             $user = $this->modelUser->getUser($nameAcc);
             if ($user) {
-                echo "<script>
-                alert('Ya existe el usuario');
-                window.location= '/proyectos/TP_ESPECIAL_JUAN_ENCABO/';
-             </script>";
+                header("Location:" . BASE_URL);
             } else {
                 if ($contrasenia === $contraseniaConfirmada) {
                     $passwordHashing = password_hash($contrasenia, PASSWORD_ARGON2ID);
@@ -43,11 +40,7 @@ class UserController
                     $this->login();
                     header("Location:" . BASE_URL);
                 } else {
-
-                    echo "<script>
-                    alert('las contraseñas no coinciden');
-                    window.location= '/proyectos/TP_ESPECIAL_JUAN_ENCABO/'
-                 </script>";
+                    header("Location:" . BASE_URL);;
                 }
             }
         }
@@ -60,7 +53,6 @@ class UserController
             $user = $this->modelUser->getUser($nick);
             header("Location: " . BASE_URL);
             if ($user && password_verify($password, $user->password)) {
-
                 $this->userHelper->login($user);
             } else {
                 header("Location: " . BASE_URL);

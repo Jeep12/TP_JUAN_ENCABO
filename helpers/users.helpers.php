@@ -10,7 +10,7 @@ class UserHelper{
         $_SESSION['USER_ID'] = $user->id;
         $_SESSION['USERNAME'] = $user->nombre;
         $_SESSION['ADMIN']=$user->admin;
-        return $user->nombre;
+        
     }
 
     public function checkLoggedIn() {

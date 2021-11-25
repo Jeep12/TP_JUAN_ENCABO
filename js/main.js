@@ -107,7 +107,7 @@ async function showComments() {
     dataAdmin = boxComentario.getAttribute("data-admin");
     let listComentario = document.getElementById("listComentario");
     try {
-        let res = await fetch(url + "/api/comments/" + dataId);
+        let res = await fetch(url + "api/comments/" + dataId);
         let response = await res.json();
         if (res.status == 200) {
             for (let i = 0; i < response.length; i++) {
@@ -117,7 +117,7 @@ async function showComments() {
                 listComentario.innerHTML += "<p class='text-muted'> Puntación:" + response[i].valoracion + "</p>";
                 listComentario.innerHTML += "<p style=''> Fecha de publicación " + response[i].fecha + "</p>";
                 if (dataAdmin == true) {
-                    listComentario.innerHTML += "<button type='button' name='deleteComment' data-idComment=" + response[i].id + ">Borrar</button>";
+                    listComentario.innerHTML += "<button class='btn btn-dark' type='button' name='deleteComment' data-idComment=" + response[i].id + ">Borrar</button>";
                 }
                 listComentario.innerHTML += "</li>";
                 listComentario.innerHTML += "<hr>";
